@@ -1,0 +1,16 @@
+tls:
+  certificates:
+    - certFile: "/etc/certs/traefik.crt"
+      keyFile: "etc/certs/traefik.key"
+http:
+  routers:
+    dashboard-websecure:
+      rule: Host(`traefik.henrotaym.ip-ddns.com`)
+      service: api@internal
+      tls: true
+      entryPoints: websecure
+    dashboard-web:
+      rule: Host(`traefik.henrotaym.ip-ddns.com`)
+      service: api@internal
+      entryPoints: web
+
